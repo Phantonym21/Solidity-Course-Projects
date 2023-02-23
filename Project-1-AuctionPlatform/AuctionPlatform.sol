@@ -6,7 +6,7 @@ pragma solidity ^0.4.24;
 import "https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol";
 
 // importing Auction contract to use for making Auctions;
-import "./Auction2.sol";
+import "./Auction.sol";
 
 contract AuctionPlatform{
 
