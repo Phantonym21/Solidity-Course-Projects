@@ -26,6 +26,7 @@ contract AuctionPlatform {
     // Event for logging that the given address has bidded on the auction with the given aucId.
     event biddedOnAuction(address indexed from, uint256 indexed _aucId);
 
+    // Event for logging that bid has been updated
     event updatedBid(address indexed from, uint256 indexed _aucId);
 
     //  this function gives the list of bids with their amounts to the owner of the auction
@@ -42,6 +43,17 @@ contract AuctionPlatform {
     // this function gives the list of bids bidded by the address owner on different auctions
     function getListOfOwnBids() public view ifBidded returns (uint256[]) {
         return bidOwners[msg.sender];
+    }
+
+    // returns the bidded amount on the auction specified by the aucId
+    function getBidValOnAuction(uint256 _aucId)
+        public
+        view
+        ifBidded
+        isRunning(_aucId)
+        returns (uint256)
+    {
+        return auctionList[_aucId].bids(msg.sender);
     }
 
     // this gives the maximum bid on the auction of the address owner
@@ -205,7 +217,7 @@ contract AuctionPlatform {
     // to check if auction is active or not
     modifier isRunning(uint256 _aucId) {
         require(
-            _aucId < auctionList.length &&
+            _aucId <= aucId &&
                 auctionList[_aucId].getEndTime() > block.timestamp,
             "Auction is Inactive"
         );

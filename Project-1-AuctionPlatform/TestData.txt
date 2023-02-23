@@ -1,7 +1,7 @@
-The Last Supper,2023,2,23,2023,2,24,1000 
+The Last Supper,2023,2,25,2023,2,27,1000 
 
-The Starry Night,2023,2,23,2023,2,24,2500 
+The Starry Night,2023,2,25,2023,2,27,2500 
 
-The Jackson Pollock,2023,2,23,2023,2,24,25000 
+The Jackson Pollock,2023,2,25,2023,2,27,25000 
 
 The Last Supper,2023,2,22,2023,2,21,1000

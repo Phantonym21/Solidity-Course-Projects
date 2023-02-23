@@ -20,6 +20,25 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "_aucId",
+						"type": "uint256"
+					}
+				],
+				"name": "getBidValOnAuction",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": false,
 				"inputs": [
 					{
@@ -281,15 +300,15 @@
 	},
 	"sources": {
 		"Project-1-AuctionPlatform/Auction.sol": {
-			"keccak256": "0x8913429d9e209c0cef5628eb3658a94bbeb23428bcf9209a4b8d3faa89bee2b7",
+			"keccak256": "0x809a91c1700881fe77198df7418a015d1f0436113f87be47603ba7faac550854",
 			"urls": [
-				"bzzr://f13c8db4f8e7e69c1c9adf8f43ae8baded946d8ea3a370037249e7d331b4bea5"
+				"bzzr://fdcb95c82b7752c26ce3066c80e228ebee3b5bad822c9bfc3ad353b5d427aed0"
 			]
 		},
 		"Project-1-AuctionPlatform/AuctionPlatform.sol": {
-			"keccak256": "0xa2d571c66d76ab1d922425c030645ea630dc6cfe7d83a0d43aeb62cdc294d293",
+			"keccak256": "0x84ada0fc1f15dbf31a916d0b8e76f641a8bd173591482402af22a39e221c61a1",
 			"urls": [
-				"bzzr://223762c0c450248b5cd093d7703b395ae550fffbb2441a357e82c84838dd424f"
+				"bzzr://ed0882cc530af38448333f052081913da6eb2be7ef05b73fec08c8eeb8ff5bf0"
 			]
 		},
 		"https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol": {

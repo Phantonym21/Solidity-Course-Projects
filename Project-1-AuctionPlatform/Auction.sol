@@ -9,7 +9,7 @@ contract Auction {
 
     bool bidsMade; // flag to check if bids are made on the auction or not
 
-    mapping(address => uint256) bids; // mapping of the address to bids to keep track of bidders and thier bid values
+    mapping(address => uint256) public bids; // mapping of the address to bids to keep track of bidders and thier bid values
     address[] biddersList; // list of bidders to access the mappings of bids easily
 
     // getter for bidsMade used in AuctionPlatform

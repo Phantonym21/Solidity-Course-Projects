@@ -48,6 +48,25 @@
 				"type": "function"
 			},
 			{
+				"constant": true,
+				"inputs": [
+					{
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "bids",
+				"outputs": [
+					{
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"constant": false,
 				"inputs": [
 					{
@@ -167,9 +186,9 @@
 	},
 	"sources": {
 		"Project-1-AuctionPlatform/Auction.sol": {
-			"keccak256": "0x8913429d9e209c0cef5628eb3658a94bbeb23428bcf9209a4b8d3faa89bee2b7",
+			"keccak256": "0x809a91c1700881fe77198df7418a015d1f0436113f87be47603ba7faac550854",
 			"urls": [
-				"bzzr://f13c8db4f8e7e69c1c9adf8f43ae8baded946d8ea3a370037249e7d331b4bea5"
+				"bzzr://fdcb95c82b7752c26ce3066c80e228ebee3b5bad822c9bfc3ad353b5d427aed0"
 			]
 		}
 	},
