@@ -38,17 +38,20 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
 
          ////////////////////////////// Overrides required //////////////////////////////////
 
-    address owner;                                                   // address of Owner to keep track of the owner of the contract
+    address owner; 
+    // mint price = 0.0000005 eth;
+    uint public mintPrice;                           // initializing the mint price of the nft
+                                                      // address of Owner to keep track of the owner of the contract
                                  // 
     Counters.Counter private _tokenIdCounter;                        // initializing _tokenCounter with Counters to keep track of the nfts
 
     // constructor which initializes the name and the symbol of the collection of NFTS as per ERC721 standards using the modfiers;
-    constructor() ERC721("PaintingsNFT","PNFT"){                     
-        owner = msg.sender;                                // assigning address of the deployer of the contract to owner
+    constructor(uint _mintPrice) ERC721("PaintingsNFT","PNFT"){                     
+        owner = msg.sender;                                             // assigning address of the deployer of the contract to owner
+        mintPrice = _mintPrice;                                         // definig mint price which is passed as argument to the constructor while deploying the contract
     }
 
-    // mint price = 0.0000005 eth;
-    uint constant public mintPrice = 0;                    // initializing and defining the mint price of the nft
+                        
 
     // defining an enumeration for storing the status of the Listing
     enum ListingStatus{
@@ -90,7 +93,7 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
         listing.owner = msg.sender;                                           
         listing.title = _title;
         listing.description = _description;
-        listing.price = _price;
+        listing.price = _price + mintPrice;              //
         listing.uri = _uri;
         listing.status = ListingStatus.active;
         listing.listingId = numberOfListings-1; 

@@ -30,14 +30,16 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
     
 
     address owner;
+    uint256 public mintPrice;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("PaintingsNFT", "PNFT") {
+    constructor(uint _mintPrice) ERC721("PaintingsNFT", "PNFT") {
         owner = msg.sender;
+        mintPrice = _mintPrice;
     }
 
-    uint256 public constant mintPrice = 0;
+    
 
     enum ListingStatus {
         active,
@@ -75,7 +77,7 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
         listing.owner = msg.sender;
         listing.title = _title;
         listing.description = _description;
-        listing.price = _price;
+        listing.price = _price + mintPrice;       //
         listing.uri = _uri;
         listing.status = ListingStatus.active;
         listing.listingId = numberOfListings - 1;

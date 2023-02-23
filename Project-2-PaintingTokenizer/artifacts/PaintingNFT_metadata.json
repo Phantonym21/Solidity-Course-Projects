@@ -6,7 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_mintPrice",
+						"type": "uint256"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -527,7 +533,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"Project-2-PaintingTokenizer/PaintingTokenizer(Commented).sol": "PaintingNFT"
+			"Project-2-PaintingTokenizer/PaintingTokenizer.sol": "PaintingNFT"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -645,12 +651,12 @@
 				"dweb:/ipfs/QmQJquTMtc6fgm5JQzGdsGpA2fqBe3MHWEdt2qzaLySMdN"
 			]
 		},
-		"Project-2-PaintingTokenizer/PaintingTokenizer(Commented).sol": {
-			"keccak256": "0x243738fda2ebcd63a7299a0a30efb3bf2aecd5f30175629c5e1ce4705d6113f0",
+		"Project-2-PaintingTokenizer/PaintingTokenizer.sol": {
+			"keccak256": "0xbbe3faa5c1ff333caae3f5e5a21c923c576c1e238bba3f395c29e7ef820652b6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://711488a3e62a1bc7fd533bc47b3437b6236bd3dd3837cd5d45b0fb80145d7c67",
-				"dweb:/ipfs/QmNzQTnV5DJ6L8gbLjoUgMWVyeUEPDyB9WhAZ7GwZYpuFD"
+				"bzz-raw://896fce5b0a2cfab9055cd5e401aac1eb477ad601bc0aed8064d7f3c408218529",
+				"dweb:/ipfs/Qmf4R7pQdEhsX5jtwt2Um9SCb72TY4mbVDiP7Udf1Cqwn3"
 			]
 		}
 	},
