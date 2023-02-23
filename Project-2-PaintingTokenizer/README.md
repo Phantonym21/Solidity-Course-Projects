@@ -1,10 +1,10 @@
-## Painting Tokenizer Smart Contract
+# Painting Tokenizer Smart Contract
 
-### Overview
+## Overview
 
 Smart contract to tokenize assets, specifically paintings, listed on a it, with features such as listing paintings, making payments, minting NFTs, and transferring ownership to the buyer. Built using **Solidity** on [Remix](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiz7uKP96v9AhWKed4KHTOkBVYQFnoECA4QAQ&url=https%3A%2F%2Fremix.ethereum.org%2F&usg=AOvVaw3PN4PhZQHRRyT3Djgq-u69) and deployed on **Goerli test network** for testing.
 
-### Features
+## Features
 
 - Sellers can list their painting by providing necessary title,description and URI with whatever price they want. After listing they will recieve an ID called as listing ID which is associated with their painting. 
 
@@ -18,12 +18,20 @@ Smart contract to tokenize assets, specifically paintings, listed on a it, with 
 
 - This contract uses openzeppelin's implementation of [ERC721](https://docs.openzeppelin.com/contracts/4.x/erc721) for minting NFTs and [ERC721URIStorage](https://docs.openzeppelin.com/contracts/4.x/api/token/erc721#ERC721URIStorage) for setting thier URI.
 
-### Technical Skills
+## Technologies
 
 - Solidity
 - Etherium
 - Blockchain Technology
 - Smart Contracts
 - Non-Fungible Tokens(NFTs)
+
+## Usage
+
+To use this smart contract, you will need an Ethereum wallet and an application that supports interaction with smart contracts. 
+
+## License
+
+This project is licensed under the MIT License.
 
 
