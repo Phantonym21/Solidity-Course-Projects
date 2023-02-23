@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: MIT;
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.4.24;
 
 
@@ -64,7 +64,7 @@ contract AuctionPlatform{
         uint maxBid = auctionList[aucOwners[msg.sender]].getMaximumBid();
 
         // mapping of aucOwners returns the aucId corresponding to the address passed which in turn is used to access the 
-        // Auctino object through the auctionList. then the endAuctionWithSelectedBid is called and the maxBid is passed to it as Argument
+        // Auction object through the auctionList. then the endAuctionWithSelectedBid is called and the maxBid is passed to it as Argument
         address winner = auctionList[aucOwners[msg.sender]].endAuctionWithSelectedBid(maxBid);
 
         emit auctionEnded(winner,maxBid);
