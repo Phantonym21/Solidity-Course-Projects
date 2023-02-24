@@ -12,6 +12,7 @@ contract AuctionPlatform {
     Auction[] auctionList; // list of all the auctions created;
     mapping(address => uint256) aucOwners; // address of Auction owners to aucId;
     mapping(address => uint256[]) bidOwners; // address of Bidders mapped to aucIds;
+    // uint[] public activeAuctions;
 
     // Event for logging that auction is created with the aucId by the address at the given time.
     event auctionCreated(
@@ -29,8 +30,51 @@ contract AuctionPlatform {
     // Event for logging that bid has been updated
     event updatedBid(address indexed from, uint256 indexed _aucId);
 
-    constructor(uint _auctionLimit) public {
+    constructor(uint256 _auctionLimit) public {
         auctionList.length = _auctionLimit + 1;
+    }
+
+    function getAuctionDescription(uint256 _aucId)
+        public
+        view
+        isRunning(_aucId)
+        returns (string memory)
+    {
+        return auctionList[_aucId].getDescription();
+    }
+
+    function getAuctionStartTime(uint256 _aucId)
+        public
+        view
+        isRunning(_aucId)
+        returns (
+            uint256 year,
+            uint256 month,
+            uint256 day
+        )
+    {
+        uint256 timeStamp = auctionList[_aucId].getStartTime();
+
+        (year, month, day) = BokkyPooBahsDateTimeLibrary.timestampToDate(
+            timeStamp
+        );
+    }
+
+    function getAuctionEndTime(uint256 _aucId)
+        public
+        view
+        isRunning(_aucId)
+        returns (
+            uint256 year,
+            uint256 month,
+            uint256 day
+        )
+    {
+        uint256 timeStamp = auctionList[_aucId].getEndTime();
+
+        (year, month, day) = BokkyPooBahsDateTimeLibrary.timestampToDate(
+            timeStamp
+        );
     }
 
     //  this function gives the list of bids with their amounts to the owner of the auction
@@ -49,8 +93,36 @@ contract AuctionPlatform {
         return bidOwners[msg.sender];
     }
 
+    function getListOfActiveAuctions() public view returns (uint256[]) {
+        uint256 actualNo = 0;
+        Auction[] storage aucList = auctionList;
+        for (uint256 i = 1; i <= aucId; i++) {
+            if (aucList[i].getEndTime() < block.timestamp) {
+                continue;
+            } else {
+                actualNo++;
+            }
+        }
+        uint256[] memory list = new uint256[](actualNo);
+        uint256 j = 0;
+        for (uint256 k = 1; k <= aucId; k++) {
+            if (aucList[k].getEndTime() < block.timestamp) {
+                continue;
+            } else {
+                list[j] = k;
+                j++;
+            }
+        }
+        return list;
+    }
+
     // function to get minimum bid value of the auction corresponding to aucId
-    function getMinBidValOfAuction(uint _aucId) public isRunning(_aucId) view returns(uint256){
+    function getMinBidValOfAuction(uint256 _aucId)
+        public
+        view
+        isRunning(_aucId)
+        returns (uint256)
+    {
         return auctionList[_aucId].getMinBidVal();
     }
 
@@ -153,7 +225,10 @@ contract AuctionPlatform {
         public
         isAlreadyAuctionOwner /// to check if the caller already owns an auction or not
     {
-        require(aucId < auctionList.length-1,"Auctions Limit reached can't create anymore Auctions");
+        require(
+            aucId < auctionList.length - 1,
+            "Auctions Limit reached can't create anymore Auctions"
+        );
         // Checking if the dates entered are valid to be passed to the DateTime Library for converstion
         require(
             BokkyPooBahsDateTimeLibrary.isValidDateTime(

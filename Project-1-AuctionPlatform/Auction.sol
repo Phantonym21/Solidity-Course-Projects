@@ -12,6 +12,16 @@ contract Auction {
     mapping(address => uint256) public bids; // mapping of the address to bids to keep track of bidders and thier bid values
     address[] biddersList; // list of bidders to access the mappings of bids easily
 
+    // getter for description used in AuctionPlatform
+    function getDescription() external view returns(string memory){
+        return description;
+    }
+
+    // getter for startTime usend in AuctionPlatform
+    function getStartTime() external view returns(uint){
+        return startTime;
+    }
+
     // getter for bidsMade used in AuctionPlatform
     function getBidsMade() external view returns (bool) {
         return bidsMade;
