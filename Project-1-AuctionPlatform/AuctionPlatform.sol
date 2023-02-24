@@ -108,6 +108,7 @@ contract AuctionPlatform {
                 actualNo++;
             }
         }
+        require(actualNo>0,"no auctions are currently Active");
         uint256[] memory list = new uint256[](actualNo);              // defining array to return with appropriate size
         uint256 j = 0;                                                // variable j to track actual count
         for (uint256 k = 1; k <= aucId; k++) {                        // for loop for filling the active auctions list with their ids
