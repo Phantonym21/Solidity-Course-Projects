@@ -160,10 +160,12 @@ contract AuctionPlatform {
     function getMaxBid(uint256 _aucId)
         public
         view
-        isBidsMade
+        isRunning(_aucId)
         returns (uint256)
     {
-        return auctionList[_aucId].getMaximumBid();
+        uint maxbid = auctionList[_aucId].getMaximumBid();
+        require(maxbid!=0,"There aren't any bids on the Auction");
+        return maxbid;
     }
 
     // this function ends the auction by automatically selecting the maximum bid on the autction and returns the address of the winner
