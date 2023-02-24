@@ -37,9 +37,22 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
     }
 
          ////////////////////////////// Overrides required //////////////////////////////////
+    /// EVENTS ///
+
+    // for logging the listing created with the listingid at the time by the address 
+    event listingCreated(address indexed Lister,uint indexed listing_id,uint time);       
+
+    // for logging the transaction that has taken place while buying the listing 
+    event listingBought(address indexed Buyer,address indexed Seller,uint time); 
+
+    // for logging that the listing has been removed by the owner
+    event listingRemoved(address indexed from,uint indexed listingid);
+
+    
+
 
     address owner; 
-    // mint price = 0.0000005 eth;
+
     uint public mintPrice;                           // initializing the mint price of the nft
                                                       // address of Owner to keep track of the owner of the contract
                                  // 
@@ -81,7 +94,7 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
  
 
     // function to create listing which takes as arguments the titel,description, uri and the price 
-    function createListing(string memory _title, string memory _description, string memory _uri, uint _price) public minPrice(_price) returns(uint){
+    function createListing(string memory _title, string memory _description, string memory _uri, uint _price) public minPrice(_price) {
 
         // initializing a Listing object and creating a pointer called "listing" that points to it
         Listing storage listing = listings[numberOfListings];         
@@ -89,7 +102,7 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
         actualCount++;
         numberOfListings++;
 
-        // updating all the attributes of the listing except 
+        // updating all the attributes of the listing 
         listing.owner = msg.sender;                                           
         listing.title = _title;
         listing.description = _description;
@@ -100,8 +113,10 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
         
 
 
-        ///EVENT///       
-        return numberOfListings-1;
+        
+        uint listingid = numberOfListings - 1; 
+
+        emit listingCreated(msg.sender,listingid,block.timestamp);
     
     }
 
@@ -118,6 +133,8 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
 
         // decreasing the actualCount only as the total listings have decreased
         actualCount--;
+
+        emit listingRemoved(msg.sender, _listingId);
 
     }
 
@@ -165,7 +182,7 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
         require(listing.status!=ListingStatus.sold && listing.status != ListingStatus.removed,"Listing is not active");
 
         // checking if the amount sent is equal to the addition of the minting price and the listing price
-        require(listing.price+mintPrice <= msg.value,"not enough funds sent");
+        require(listing.price<= msg.value,"not enough funds sent");
 
 
         // defining a token id for the mint function
@@ -181,14 +198,17 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
         // sets the tokenURI which is the metadata of the nft 
         _setTokenURI(tokenId,listing.uri);
 
+        address Owner = listing.owner;
         // transfering the amount sent to the owner of the listing
-        payable(listing.owner).transfer(msg.value - mintPrice);
+        payable(Owner).transfer(msg.value - mintPrice);
 
         // updating listing status to sold
         listing.status = ListingStatus.sold;
 
         // decrementing the actualCount as the listing has been sold
         actualCount--;
+
+        emit listingBought(msg.sender,Owner,block.timestamp);
 
     }
 

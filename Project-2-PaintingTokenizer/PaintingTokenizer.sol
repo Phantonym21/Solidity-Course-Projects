@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-contract PaintingNFT is ERC721, ERC721URIStorage {
+contract PaintingTokenizer is ERC721, ERC721URIStorage {
     using Counters for Counters.Counter;
     using SafeMath for uint256;
 
@@ -27,14 +27,22 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
         return super.tokenURI(tokenId);
     }
 
+     
+    event listingCreated(address indexed Lister,uint indexed listing_id,uint time);       
+
     
+    event listingBought(address indexed Buyer,address indexed Seller,uint time); 
+
+   
+    event listingRemoved(address indexed from,uint indexed listingid);
+
 
     address owner;
     uint256 public mintPrice;
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor(uint _mintPrice) ERC721("PaintingsNFT", "PNFT") {
+    constructor(string memory name, string memory symbol, uint _mintPrice) ERC721(name, symbol) {
         owner = msg.sender;
         mintPrice = _mintPrice;
     }
@@ -68,7 +76,7 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
         string memory _description,
         string memory _uri,
         uint256 _price
-    ) public minPrice(_price) returns (uint256) {
+    ) public minPrice(_price) {
         Listing storage listing = listings[numberOfListings];
 
         actualCount++;
@@ -82,7 +90,9 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
         listing.status = ListingStatus.active;
         listing.listingId = numberOfListings - 1;
 
-        return numberOfListings - 1;
+        uint listingid = numberOfListings - 1; 
+
+        emit listingCreated(msg.sender,listingid,block.timestamp);
     }
 
     function removeListing(uint256 _listingId) public {
@@ -96,6 +106,8 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
         listing.status = ListingStatus.removed;
 
         actualCount--;
+
+        emit listingRemoved(msg.sender, _listingId);
     }
 
     function viewListings() public view returns (Listing[] memory) {
@@ -126,6 +138,7 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
         payable
         validListingId(_listingId)
     {
+        
         Listing storage listing = listings[_listingId];
 
         require(
@@ -134,8 +147,10 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
             "Listing is not active"
         );
 
+        require(listing.owner != msg.sender,"Cannot Buy own Listing");
+
         require(
-            listing.price + mintPrice <= msg.value,
+            listing.price <= msg.value,
             "not enough funds sent"
         );
 
@@ -147,11 +162,15 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
 
         _setTokenURI(tokenId, listing.uri);
 
-        payable(listing.owner).transfer(msg.value - mintPrice);
+        address Owner = listing.owner;
+
+        payable(Owner).transfer(msg.value - mintPrice);
 
         listing.status = ListingStatus.sold;
 
         actualCount--;
+
+        emit listingBought(msg.sender,Owner,block.timestamp);
     }
 
     modifier onlyOwner() {
@@ -170,7 +189,7 @@ contract PaintingNFT is ERC721, ERC721URIStorage {
     modifier minPrice(uint256 _price) {
         require(
             _price > mintPrice,
-            "minimum price should be greater than 0.0000005 eth"
+            "minimum price should be greater than mint Price"
         );
         _;
     }
