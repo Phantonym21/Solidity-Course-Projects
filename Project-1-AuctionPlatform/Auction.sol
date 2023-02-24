@@ -1,5 +1,5 @@
-// SPDX-License-Identifier: MIT;
-pragma solidity ^0.4.24;
+pragma solidity ^0.4.26;
+// SPDX-License-Identifier: Unlicensed;
 
 contract Auction {
     string description; // description of the item being auctioned

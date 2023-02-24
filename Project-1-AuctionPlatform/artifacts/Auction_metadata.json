@@ -214,9 +214,9 @@
 	},
 	"sources": {
 		"Project-1-AuctionPlatform/Auction.sol": {
-			"keccak256": "0xe868eb1b69d56a276f757550254cfbbaab2905315015381107173c09dd36e1a1",
+			"keccak256": "0x36ab14b9d19c0270407b4c6468ff35816a11cc64d0e3efea8b061533086c0c26",
 			"urls": [
-				"bzzr://67062eae51378ad2028d6a802531fb613f0dc931f111af27198c037593556b08"
+				"bzzr://ac2e72627cdf83211cf82d24a5c19a867e1cec4905da2385e45d48fae44a3887"
 			]
 		}
 	},

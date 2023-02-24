@@ -1,5 +1,5 @@
+pragma solidity ^0.4.26;
 //SPDX-License-Identifier: MIT;
-pragma solidity ^0.4.24;
 
 // importing BokkyPooBahsDateTime Library for converting Date to timestamp;
 import "https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol";
