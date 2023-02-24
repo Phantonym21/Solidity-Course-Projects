@@ -30,10 +30,12 @@ contract AuctionPlatform {
     // Event for logging that bid has been updated
     event updatedBid(address indexed from, uint256 indexed _aucId);
 
+    // setting the auction limit when the contract is deployed
     constructor(uint256 _auctionLimit) public {
         auctionList.length = _auctionLimit + 1;
     }
 
+    // function for getitng description of auction sepcified by the aucId
     function getAuctionDescription(uint256 _aucId)
         public
         view
@@ -43,35 +45,37 @@ contract AuctionPlatform {
         return auctionList[_aucId].getDescription();
     }
 
+    // function for getitng starting time of auction sepcified by the aucId 
     function getAuctionStartTime(uint256 _aucId)
         public
         view
         isRunning(_aucId)
         returns (
-            uint256 year,
+            uint256 year,                         // returns the DateTime in yyyy:mm:dd format
             uint256 month,
             uint256 day
         )
     {
         uint256 timeStamp = auctionList[_aucId].getStartTime();
-
+        // BokkyPooBahsDateTimeLibrary is used for converting timestamp to yyyy:mm:dd format
         (year, month, day) = BokkyPooBahsDateTimeLibrary.timestampToDate(
             timeStamp
         );
     }
 
+     // function for getitng starting time of auction sepcified by the aucId
     function getAuctionEndTime(uint256 _aucId)
         public
         view
         isRunning(_aucId)
         returns (
             uint256 year,
-            uint256 month,
+            uint256 month,                      // returns the DateTime in yyyy:mm:dd format
             uint256 day
         )
     {
         uint256 timeStamp = auctionList[_aucId].getEndTime();
-
+        // BokkyPooBahsDateTimeLibrary is used for converting timestamp to yyyy:mm:dd format
         (year, month, day) = BokkyPooBahsDateTimeLibrary.timestampToDate(
             timeStamp
         );
@@ -93,19 +97,20 @@ contract AuctionPlatform {
         return bidOwners[msg.sender];
     }
 
+    // returns the list of auctions which are currently active and can be bidded on
     function getListOfActiveAuctions() public view returns (uint256[]) {
-        uint256 actualNo = 0;
-        Auction[] storage aucList = auctionList;
+        uint256 actualNo = 0;                                    // initializing active count to 0
+        Auction[] storage aucList = auctionList;                 // creating a pointer to the auctionList for effecient iteration 
         for (uint256 i = 1; i <= aucId; i++) {
-            if (aucList[i].getEndTime() < block.timestamp) {
+            if (aucList[i].getEndTime() < block.timestamp) {     // for loop for counting the number of active auctions
                 continue;
             } else {
                 actualNo++;
             }
         }
-        uint256[] memory list = new uint256[](actualNo);
-        uint256 j = 0;
-        for (uint256 k = 1; k <= aucId; k++) {
+        uint256[] memory list = new uint256[](actualNo);              // defining array to return with appropriate size
+        uint256 j = 0;                                                // variable j to track actual count
+        for (uint256 k = 1; k <= aucId; k++) {                        // for loop for filling the active auctions list with their ids
             if (aucList[k].getEndTime() < block.timestamp) {
                 continue;
             } else {
@@ -150,6 +155,7 @@ contract AuctionPlatform {
         return auctionList[aucOwners[msg.sender]].getMaximumBid();
     }
 
+    // function to get maximum bid of the auction specified by the auction Id;
     function getMaxBid(uint256 _aucId)
         public
         view
@@ -304,7 +310,7 @@ contract AuctionPlatform {
         require(
             _aucId <= aucId &&
                 auctionList[_aucId].getEndTime() > block.timestamp,
-            "Auction is Inactive"
+            "Auction is Inactive or not present"
         );
         _;
     }
