@@ -9,7 +9,7 @@ import "./Auction.sol";
 
 contract AuctionPlatform {
     uint256 public aucId = 0; // this variable keeps track of number of auctions and also acts as aucionId;
-    Auction[101] auctionList; // list of all the auctions created;
+    Auction[] auctionList; // list of all the auctions created;
     mapping(address => uint256) aucOwners; // address of Auction owners to aucId;
     mapping(address => uint256[]) bidOwners; // address of Bidders mapped to aucIds;
 
@@ -29,6 +29,10 @@ contract AuctionPlatform {
     // Event for logging that bid has been updated
     event updatedBid(address indexed from, uint256 indexed _aucId);
 
+    constructor(uint _auctionLimit) public {
+        auctionList.length = _auctionLimit + 1;
+    }
+
     //  this function gives the list of bids with their amounts to the owner of the auction
     function getListOfBidsOnAuction()
         public
@@ -43,6 +47,11 @@ contract AuctionPlatform {
     // this function gives the list of bids bidded by the address owner on different auctions
     function getListOfOwnBids() public view ifBidded returns (uint256[]) {
         return bidOwners[msg.sender];
+    }
+
+    // function to get minimum bid value of the auction corresponding to aucId
+    function getMinBidValOfAuction(uint _aucId) public isRunning(_aucId) view returns(uint256){
+        return auctionList[_aucId].getMinBidVal();
     }
 
     // returns the bidded amount on the auction specified by the aucId
@@ -144,6 +153,7 @@ contract AuctionPlatform {
         public
         isAlreadyAuctionOwner /// to check if the caller already owns an auction or not
     {
+        require(aucId < auctionList.length-1,"Auctions Limit reached can't create anymore Auctions");
         // Checking if the dates entered are valid to be passed to the DateTime Library for converstion
         require(
             BokkyPooBahsDateTimeLibrary.isValidDateTime(
