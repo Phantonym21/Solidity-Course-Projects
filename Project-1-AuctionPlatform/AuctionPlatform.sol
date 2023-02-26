@@ -343,4 +343,5 @@ contract AuctionPlatform {
         require(bid > 0, "Minimum BidVal cannot be 0");
         _;
     }
+    //
 }
