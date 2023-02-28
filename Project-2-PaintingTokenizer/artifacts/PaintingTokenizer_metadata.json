@@ -9,12 +9,12 @@
 				"inputs": [
 					{
 						"internalType": "string",
-						"name": "name",
+						"name": "_name",
 						"type": "string"
 					},
 					{
 						"internalType": "string",
-						"name": "symbol",
+						"name": "_symbol",
 						"type": "string"
 					},
 					{
@@ -736,11 +736,11 @@
 			]
 		},
 		"Project-2-PaintingTokenizer/PaintingTokenizer.sol": {
-			"keccak256": "0x42f34d3a9e8d52c4f09873ad41bd8ab6bf12daf1a7fb8f3ff88eb1a1d1893705",
+			"keccak256": "0xe9397b65bfaeb1f4b617ca3e306e58f6481b236504e26074ff678c9ca5b6b63b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://7b78a0120a244a9e7a7fbfe1c7fab924f7ecf6168e4b12d82b8e949810115ca4",
-				"dweb:/ipfs/QmQtyXgWMuACemZ71hMNymjVZPRHeYWzo2xY3X96MH6pK2"
+				"bzz-raw://a10537cf9b739816a18f6eaf96f120ef2169f92b9ee8347ce49af2362399a913",
+				"dweb:/ipfs/QmdDoenevk9vUVigDXY3qUC4P76VvYdm51MAmWTKrnumPp"
 			]
 		}
 	},

@@ -59,7 +59,7 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
     Counters.Counter private _tokenIdCounter;                        // initializing _tokenCounter with Counters to keep track of the nfts
 
     // constructor which initializes the name and the symbol of the collection of NFTS as per ERC721 standards using the modfiers;
-    constructor(uint _mintPrice) ERC721("PaintingsNFT","PNFT"){                     
+    constructor(string memory _name, string memory _symbol,uint _mintPrice) ERC721(_name,_symbol){                     
         owner = msg.sender;                                             // assigning address of the deployer of the contract to owner
         mintPrice = _mintPrice;                                         // definig mint price which is passed as argument to the constructor while deploying the contract
     }

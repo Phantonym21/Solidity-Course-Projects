@@ -42,7 +42,7 @@ contract PaintingTokenizer is ERC721, ERC721URIStorage {
 
     Counters.Counter private _tokenIdCounter;
 
-    constructor(string memory name, string memory symbol, uint _mintPrice) ERC721(name, symbol) {
+    constructor(string memory _name, string memory _symbol, uint _mintPrice) ERC721(_name, _symbol) {
         owner = msg.sender;
         mintPrice = _mintPrice;
     }

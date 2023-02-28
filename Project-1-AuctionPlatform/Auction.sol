@@ -63,7 +63,7 @@ contract Auction {
         uint256 _endTime,
         uint256 _minBidVal
     ) public {
-        // same as line 10-13
+        // setting all the attributes of the auction using the arguments passed while creating it.
         description = _description;
         startTime = _startTime;
         endTime = _endTime;
@@ -117,7 +117,7 @@ contract Auction {
         uint256 maxBid = 0; // initializing the maxBid to store and return it
         for (uint256 i; i < biddersList.length; i++) {
             // for looping and checking all the bids to find the max bid
-            maxBid = max(bids[biddersList[i]], maxBid); // here we are using the max function defined on line 38
+            maxBid = max(bids[biddersList[i]], maxBid); // here we are using the max function defined on line 41
         }
         return maxBid;
     }

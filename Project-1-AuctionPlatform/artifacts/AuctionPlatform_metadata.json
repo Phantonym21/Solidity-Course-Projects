@@ -417,15 +417,15 @@
 	},
 	"sources": {
 		"Project-1-AuctionPlatform/Auction.sol": {
-			"keccak256": "0x36ab14b9d19c0270407b4c6468ff35816a11cc64d0e3efea8b061533086c0c26",
+			"keccak256": "0x6d31bd4887564571015a0ab6be7494105b59d653e62cd3d3cd52651008fffc9d",
 			"urls": [
-				"bzzr://ac2e72627cdf83211cf82d24a5c19a867e1cec4905da2385e45d48fae44a3887"
+				"bzzr://b9fe9478d73001a9ec2b2607ce523b13983a639bbfba641977b95a9a3feaf567"
 			]
 		},
 		"Project-1-AuctionPlatform/AuctionPlatform.sol": {
-			"keccak256": "0x68e74250fbd2cf7dfa18761809428bf6892a878d39ce98bc4356914241a15663",
+			"keccak256": "0x0f8e42d9815665510a4782bf3d3e1fffb99ab3e2e25fd76433eb99d4d2729c8d",
 			"urls": [
-				"bzzr://40a066e69d821feebd75ad6b58f3e087c5a60b1f52a6024b13cf6be7b5b71c22"
+				"bzzr://ea81b99e6095ceaa4b95b62adad426ffee88d2802aeb21812a6375067df81149"
 			]
 		},
 		"https://github.com/bokkypoobah/BokkyPooBahsDateTimeLibrary/blob/1ea8ef42b3d8db17b910b46e4f8c124b59d77c03/contracts/BokkyPooBahsDateTimeLibrary.sol": {

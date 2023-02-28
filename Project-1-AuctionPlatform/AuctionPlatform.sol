@@ -152,7 +152,7 @@ contract AuctionPlatform {
         returns (uint256)
     {
         // mapping of aucOwners returns the aucId corresponding to the address passed which in turn is used to access the
-        // Auctino object through the auctionList. then the getMaximumBid function is called
+        // Auction object through the auctionList. then the getMaximumBid function is called
         return auctionList[aucOwners[msg.sender]].getMaximumBid();
     }
 
@@ -170,7 +170,7 @@ contract AuctionPlatform {
 
     // this function ends the auction by automatically selecting the maximum bid on the autction and returns the address of the winner
     function endAuction() public ifAuctionOwner returns (address) {
-        // same as line 46
+        // same as line 156
         uint256 maxBid = auctionList[aucOwners[msg.sender]].getMaximumBid();
 
         // mapping of aucOwners returns the aucId corresponding to the address passed which in turn is used to access the
@@ -185,7 +185,7 @@ contract AuctionPlatform {
 
     // this function ends the auction by selecting the winner with the bid passed as argument to it. It emits the address of the winner with the bid
     function endAuction(uint256 _bid) public ifAuctionOwner {
-        // same as 60 except the argument is bid except of maxBid
+        // same as line 178 except the argument is bid except of maxBid
         address winner = auctionList[aucOwners[msg.sender]]
             .endAuctionWithSelectedBid(_bid);
         emit auctionEnded(winner, _bid);
