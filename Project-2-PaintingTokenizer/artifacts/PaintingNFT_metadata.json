@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.19+commit.7dd6d404"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -557,17 +557,6 @@
 			}
 		],
 		"devdoc": {
-			"events": {
-				"Approval(address,address,uint256)": {
-					"details": "Emitted when `owner` enables `approved` to manage the `tokenId` token."
-				},
-				"ApprovalForAll(address,address,bool)": {
-					"details": "Emitted when `owner` enables or disables (`approved`) `operator` to manage all of its assets."
-				},
-				"Transfer(address,address,uint256)": {
-					"details": "Emitted when `tokenId` token is transferred from `from` to `to`."
-				}
-			},
 			"kind": "dev",
 			"methods": {
 				"approve(address,uint256)": {
@@ -624,7 +613,7 @@
 		"compilationTarget": {
 			"Project-2-PaintingTokenizer/PaintingTokenizer(Commented).sol": "PaintingNFT"
 		},
-		"evmVersion": "paris",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -741,11 +730,11 @@
 			]
 		},
 		"Project-2-PaintingTokenizer/PaintingTokenizer(Commented).sol": {
-			"keccak256": "0xfc95d8bb5ecfa985b1b55ab8b78c4cbb26ae2e567e992e78f5d2ff7fd2bae33d",
+			"keccak256": "0x57c42dfe51a617a77a4c1c6225a780e7cfc1a8cae9ce50249ccc3f6a3b5b0424",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2e80cebd26f329fd819cd3b0a2c5b8abde288539090f26f0e261ac79390c4ce6",
-				"dweb:/ipfs/QmXDDpCjf43Q33vPyXthPouFGr2MNR9boVTBGWHrNhkmKg"
+				"bzz-raw://514e15e5d0cd87283e8b5b49117d999fb612e8a3ef0e64bba0ebf6264c3c314b",
+				"dweb:/ipfs/QmZuVvCrJBsrEjyz1s65aFJtPZfvCHQ66CCVsEVZup7ARv"
 			]
 		}
 	},

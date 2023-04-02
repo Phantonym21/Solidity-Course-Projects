@@ -51,10 +51,10 @@ contract PaintingNFT is ERC721,ERC721URIStorage{
     
 
 
-    address owner; 
+    address owner; // address of Owner to keep track of the owner of the contract
 
     uint public mintPrice;                           // initializing the mint price of the nft
-                                                      // address of Owner to keep track of the owner of the contract
+                                                      
                                  // 
     Counters.Counter private _tokenIdCounter;                        // initializing _tokenCounter with Counters to keep track of the nfts
 

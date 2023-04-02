@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.19+commit.7dd6d404"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -557,17 +557,6 @@
 			}
 		],
 		"devdoc": {
-			"events": {
-				"Approval(address,address,uint256)": {
-					"details": "Emitted when `owner` enables `approved` to manage the `tokenId` token."
-				},
-				"ApprovalForAll(address,address,bool)": {
-					"details": "Emitted when `owner` enables or disables (`approved`) `operator` to manage all of its assets."
-				},
-				"Transfer(address,address,uint256)": {
-					"details": "Emitted when `tokenId` token is transferred from `from` to `to`."
-				}
-			},
 			"kind": "dev",
 			"methods": {
 				"approve(address,uint256)": {
@@ -619,7 +608,7 @@
 		"compilationTarget": {
 			"Project-2-PaintingTokenizer/PaintingTokenizer.sol": "PaintingTokenizer"
 		},
-		"evmVersion": "paris",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
