@@ -21,7 +21,7 @@ Smart contract to tokenize assets, specifically paintings, listed on a it, with 
 ## Technologies
 
 - Solidity
-- Etherium
+- Etherum
 - Blockchain Technology
 - Smart Contracts
 - Non-Fungible Tokens(NFTs)
