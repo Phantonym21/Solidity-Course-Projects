@@ -16,7 +16,7 @@ dates from Date Time format to timestamp format.
 
 - Solidity
 - Blockchain Technology
-- Etherium
+- Ethereum
 - Smart Contracts
 
 ## Usage
